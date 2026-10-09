@@ -196,7 +196,8 @@ body.book { --bg: #f4f0e4; --line: #dcd6c4; --muted: #746d5f; --ink: #2a2520; ba
 .story .text.lines p { margin-bottom: 0.8em; }
 .story .text p.first::first-letter { float: left; font-size: 3.55em; line-height: 0.82; padding: 0.06em 0.08em 0 0; }
 .story .text p.epigraph { text-align: center; font-style: italic; text-indent: 0 !important; margin: 0 0 3rem !important; }
-.story h2 { text-align: center; font-variant-caps: all-small-caps; letter-spacing: 0.14em; font-size: 1.15rem; margin: 4rem 0 2rem; }
+.story h2 { text-align: center; font-size: 2rem; font-style: italic; line-height: 1.2; color: var(--ink); margin: 5rem 0 2.5rem; }
+.story h2::after { content: ""; display: block; width: 2rem; height: 1px; background: var(--ink); margin: 1.1rem auto 0; }
 .story .break { text-align: center; text-indent: 0 !important; letter-spacing: 0.6em; margin: 2.25rem 0 !important; color: var(--muted); }
 .story .end { margin-top: 3rem; }
 .book .pager { max-width: 40rem; margin-left: auto; margin-right: auto; }
