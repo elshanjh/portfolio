@@ -1,4 +1,14 @@
 (function () {
+  // Light and dark: the choice is remembered for the next visit.
+  var themeBtn = document.querySelector(".theme");
+  if (themeBtn) {
+    themeBtn.addEventListener("click", function () {
+      var next = document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark";
+      document.documentElement.setAttribute("data-theme", next);
+      try { localStorage.setItem("theme", next); } catch (e) {}
+    });
+  }
+
   // Portfolio sections: show one piece at a time, chosen from the list.
   var section = document.querySelector(".section");
   if (!section) return;
