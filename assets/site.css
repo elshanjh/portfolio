@@ -42,7 +42,7 @@
 }
 
 * { box-sizing: border-box; }
-html { -webkit-text-size-adjust: 100%; }
+html { -webkit-text-size-adjust: 100%; overflow-y: scroll; scrollbar-gutter: stable; }
 
 body {
   margin: 0;
