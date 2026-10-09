@@ -158,6 +158,14 @@ h1 { font-size: clamp(2.2rem, 4.5vw, 3.1rem); line-height: 1.1; letter-spacing: 
 td i { display: block; color: var(--muted); font-size: 1rem; }
 
 
+.piece .picks { margin: 2.25rem 0 0; border-top: 1px solid var(--ink); }
+.piece .picks li { padding: 0; margin: 0; border-bottom: 1px solid var(--line); }
+.piece .picks li::before { content: none; }
+.picks a { display: block; padding: 1rem 0; text-decoration: none; }
+.picks b { display: block; font-weight: 400; font-size: 1.4rem; line-height: 1.25; }
+.picks a:hover b { font-style: italic; }
+.picks span { display: block; color: var(--muted); font-size: 1.08rem; line-height: 1.45; margin-top: 0.15rem; }
+
 figure { margin: 2.5rem 0; }
 figure.square img { width: min(100%, 30rem); }
 figure.phone img { width: min(100%, 17rem); }
@@ -248,9 +256,7 @@ body.book { --bg: #f4f0e4; --line: #dcd6c4; --muted: #746d5f; --ink: #2a2520; ba
   .list ul a { font-size: 1.2rem; padding: 0.6rem 0 0.6rem 1rem; }
   .js .picked .list { display: none; }
   .js .section:not(.picked) .piece.is-shown { display: none; }
-  .section.has-overview:not(.picked) .pieces { order: -1; }
-  .section.has-overview:not(.picked) .pager { display: none; }
-  .section.has-overview:not(.picked) .list .back, .section.has-overview:not(.picked) .list h2 { display: none; }
+  .js .section.has-overview:not(.picked) .list { display: none; }
   .js .section.has-overview:not(.picked) .piece.is-shown { display: block; }
   .js .picked .back-m { display: inline-block; font-family: var(--sans); font-size: 0.8rem; color: var(--muted); text-decoration: none; margin-bottom: 1.75rem; }
   .piece .lead { font-size: 1.3rem; }
