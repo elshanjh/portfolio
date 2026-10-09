@@ -140,7 +140,7 @@ h1 { font-size: clamp(2.2rem, 4.5vw, 3.1rem); line-height: 1.1; letter-spacing: 
 .js .piece.is-shown { display: block; }
 .piece + .piece { margin-top: 6rem; }
 .js .piece + .piece { margin-top: 0; }
-.back-m { display: none; }
+.back-m, .jump, .all-m { display: none; }
 
 .piece h1 { margin-bottom: 0.7rem; }
 .piece .label { margin-bottom: 2.25rem; }
@@ -254,19 +254,31 @@ body.book { --bg: #f4f0e4; --line: #dcd6c4; --muted: #746d5f; --ink: #2a2520; ba
   .section { grid-template-columns: 1fr; gap: 2.5rem; }
   .list { position: static; }
   .list ul a { font-size: 1.2rem; padding: 0.6rem 0 0.6rem 1rem; }
-  .js .picked .list { display: none; }
+  .js .picked:not(.list-open) .list { display: none; }
   .js .section:not(.picked) .piece.is-shown { display: none; }
   .js .section.has-overview:not(.picked) .list { display: none; }
   .js .section.has-overview:not(.picked) .piece.is-shown { display: block; }
-  .js .picked .back-m { display: inline-block; font-family: var(--sans); font-size: 0.8rem; color: var(--muted); text-decoration: none; margin-bottom: 1.75rem; }
+  .section { gap: 1.5rem; }
+  .js .picked:not(.on-overview) .jump {
+    display: flex; justify-content: space-between; align-items: center; width: 100%;
+    font: 600 0.92rem var(--sans); color: var(--ink); background: none; text-align: left;
+    border: 1px solid var(--line); border-radius: 4px; padding: 0.8rem 1rem; cursor: pointer;
+  }
+  .jump::after { content: ""; width: 0.5rem; height: 0.5rem; border-right: 1.5px solid currentColor; border-bottom: 1.5px solid currentColor; transform: rotate(45deg) translateY(-2px); flex: none; margin-left: 1rem; }
+  .list-open .jump::after { transform: rotate(-135deg) translateY(-2px); }
+  .list-open .list .back, .list-open .list h2 { display: none; }
+  .js .picked:not(.on-overview) .all-m { display: inline-block; margin-top: 2rem; font: 600 0.92rem var(--sans); text-decoration: none; border-bottom: 1.5px solid var(--ink); padding-bottom: 0.15rem; }
   .piece .lead { font-size: 1.3rem; }
   .bars, .bar-nums { gap: 4px; }
   .bars li span { font-size: 0.55rem; }
   .pager { flex-direction: column; gap: 1.25rem; }
   .pager .next { margin-left: 0; text-align: left; }
   .story .text { font-size: 1.2rem; }
-  .contents a { font-size: 1.25rem; }
-  .contents li i { padding-right: 0; }
+  .contents a { flex-direction: column-reverse; align-items: flex-start; gap: 0.2rem; font-size: 1.35rem; }
+  .contents a::after { content: none; }
+  .contents a time { font-size: 0.95rem; font-variant-caps: all-small-caps; letter-spacing: 0.1em; }
+  .contents li i { padding-right: 0; font-size: 1rem; margin-top: 0.25rem; }
+  .contents li { margin-bottom: 2rem; }
 }
 
 @media print { .top, .foot, .list, .pager { display: none; } }

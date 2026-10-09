@@ -32,6 +32,28 @@
     piece.appendChild(pager);
   });
 
+  // Phones have no side list next to a piece, so a button at the top opens it
+  // and a link at the bottom leads back to the overview.
+  var jump = document.createElement("button");
+  jump.type = "button";
+  jump.className = "jump";
+  jump.setAttribute("aria-expanded", "false");
+  var sectionName = section.querySelector(".list h2");
+  jump.textContent = "All pieces in " + (sectionName ? sectionName.textContent : "this section");
+  section.insertBefore(jump, section.firstChild);
+  jump.addEventListener("click", function () {
+    var open = section.classList.toggle("list-open");
+    jump.setAttribute("aria-expanded", open ? "true" : "false");
+  });
+  pieces.forEach(function (piece, i) {
+    if (i === 0) return;
+    var all = document.createElement("a");
+    all.className = "all-m";
+    all.href = "#" + pieces[0].id;
+    all.textContent = "All pieces";
+    piece.appendChild(all);
+  });
+
   function show(scroll) {
     var id = decodeURIComponent(location.hash.replace("#", ""));
     var picked = document.getElementById(id);
@@ -40,6 +62,9 @@
 
     // On a phone the list shows first; a piece opens once one is picked.
     section.classList.toggle("picked", !!picked);
+    section.classList.toggle("on-overview", current === pieces[0]);
+    section.classList.remove("list-open");
+    jump.setAttribute("aria-expanded", "false");
     pieces.forEach(function (p) { p.classList.toggle("is-shown", p === current); });
     links.forEach(function (a) {
       var on = a.getAttribute("href") === "#" + current.id;
