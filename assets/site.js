@@ -9,6 +9,15 @@
     });
   }
 
+  // The owner's on-page editor loads only when asked for (add ?edit to the address)
+  // or when this browser has already been set up for editing.
+  var wantsEdit = /[?&]edit\b/.test(location.search), hasToken = false;
+  try { hasToken = !!localStorage.getItem("gh_token"); } catch (e) {}
+  if (wantsEdit || hasToken) {
+    var me = document.querySelector('script[src*="site.js"]');
+    if (me) { var ed = document.createElement("script"); ed.src = me.src.replace("site.js", "edit.js"); document.body.appendChild(ed); }
+  }
+
   // Portfolio sections: show one piece at a time, chosen from the list.
   var section = document.querySelector(".section");
   if (!section) return;
