@@ -69,19 +69,36 @@
     <figcaption>Open rate per email, in percent. Opens held near 20% across the 14 days. <i></i>Selling emails, every third in the series. Mailchimp reporting.</figcaption>
   </figure>
 
+  <h2>How it was built</h2>
+  <ol class="flow">
+    <li><b>Start</b>A tag on the contact starts the flow, with two entry conditions that filter who can come in.</li>
+    <li><b>Days 1 to 13</b>One email a day, with a one-day delay between each. Two emails give practical value, the third makes the offer, and the pattern repeats four times.</li>
+    <li><b>Day 14</b>A final email closes the challenge, and the contact leaves the flow.</li>
+  </ol>
+  <p>286 contacts started the flow and 256 had received the final email when these numbers were taken. Nobody was removed early, so the gap is unsubscribes and a few contacts still in progress.</p>
+
   <p>What I would change: the value emails had no link to click, so the next version gives each one a small next step to measure engagement between offers.</p>
-  <p class="label note">Work for a digital products client in health and fitness, written and built by me in Mailchimp. The client is anonymised, audience sizes are rounded, and all rates are from the platform&rsquo;s own reporting.</p>
+  <p class="label note">Work for a digital products client in health and fitness, written and built by me in Mailchimp. The emails were sent in Estonian. The client is anonymised, audience sizes are rounded, and all rates are from the platform&rsquo;s own reporting.</p>
 </article>
 
 <article class="piece" id="welcome-series" data-title="Founder story welcome series">
   <a class="back-m" href="./">All lifecycle and email pieces</a>
   <h1>Founder story welcome series</h1>
-  <p class="label">Automated sequence of ten emails</p>
-  <p class="lead">A ten-email automated sequence held its audience from start to finish: the first email opened at 30.0% and the last at 29.3%.</p>
-  <p>The goal was to introduce new subscribers to the founder and the method before any offer, so the first sale comes from trust. About 540 new subscribers entered the series.</p>
-  <p>I wrote all ten emails as one continuing story, each ending on a reason to open the next, and built the sequence with a two-day gap between sends.</p>
-  <p>Open rates stayed between 20% and 30% across the series, against an account average of about 25%. The strongest single email reached 47.8% opens and 9.0% clicks.</p>
-  <p class="label note">Work for a digital products client in health and fitness, written and built by me in Mailchimp. The client is anonymised, audience sizes are rounded, and all rates are from the platform&rsquo;s own reporting.</p>
+  <p class="label">Automated sequence of ten emails, live since 8 September 2026</p>
+  <p class="lead">A ten-email automated sequence that tells the founder&rsquo;s story before any offer. The first email opened at 30.0%, and the later emails kept opening at 24% to 48% among the contacts who reached them.</p>
+  <p>The goal was to introduce subscribers to the founder and the method before any offer, so the first sale comes from trust. About 540 contacts have entered the series.</p>
+  <p>I wrote all ten emails as one continuing story, each ending on a reason to open the next.</p>
+
+  <h2>How it was built</h2>
+  <ol class="flow">
+    <li><b>Start</b>The flow starts when a contact finishes one of three earlier sequences. Each ending applies a tag, and any of the three tags lets the contact in.</li>
+    <li><b>Email 1 and 2</b>The second email follows one day after the first.</li>
+    <li><b>Email 3 to 10</b>After that, one email every two days.</li>
+    <li><b>End</b>A &ldquo;completed&rdquo; tag is added, so later campaigns can tell who has read the whole story.</li>
+  </ol>
+
+  <p>The first five emails each reached about 500 contacts, and opens moved from 30.0% on the first to 19.7% on the fifth, against an account average of about 25%. Emails six to ten have so far reached a smaller group of 65 to 80 contacts, where opens ran from 24.4% to 47.8%. The strongest was the eighth email, at 47.8% opens and 9.0% clicks.</p>
+  <p class="label note">Work for a digital products client in health and fitness, written and built by me in Mailchimp. The emails were sent in Estonian. The client is anonymised, audience sizes are rounded, and all rates are from the platform&rsquo;s own reporting.</p>
 </article>
 
 <article class="piece" id="survey" data-title="Customer survey campaign">
@@ -92,7 +109,15 @@
   <p>The goal was to collect direct feedback from customers to guide what we offered them next. It went to about 240 customers.</p>
   <p>I wrote the email as a personal request under the subject line &ldquo;Do you have a few minutes for me?&rdquo;, kept it to one ask and one link, and built an automated thank-you for everyone who responded.</p>
   <p>27.8% opened and 17.0% clicked through to the survey. 36 people completed it, and 88.9% of them opened the thank-you email.</p>
-  <p class="label note">Work for a digital products client in health and fitness, written and built by me in Mailchimp. The client is anonymised, audience sizes are rounded, and all rates are from the platform&rsquo;s own reporting.</p>
+
+  <h2>How it was built</h2>
+  <ol class="flow">
+    <li><b>Campaign</b>One email to existing customers, linking to a survey built in Mailchimp.</li>
+    <li><b>Start</b>Submitting the survey starts a short automation.</li>
+    <li><b>Thank-you</b>The contact gets a thank-you email straight away.</li>
+    <li><b>End</b>A &ldquo;responded to survey&rdquo; tag is added, so responders can be segmented in later campaigns.</li>
+  </ol>
+  <p class="label note">Work for a digital products client in health and fitness, written and built by me in Mailchimp. The emails were sent in Estonian. The client is anonymised, audience sizes are rounded, and all rates are from the platform&rsquo;s own reporting.</p>
 </article>
 
 <article class="piece" id="newsletters" data-title="Monthly newsletters">
@@ -101,17 +126,18 @@
   <p class="label">Three editions, August and September 2026</p>
   <p class="lead">Three newsletter editions went out while the list grew by about 30%, from roughly 470 to 610 subscribers, and two of the three opened well above the account average of 25%.</p>
   <p>I planned the content, wrote each edition and built it in Mailchimp. The first September edition underperformed, so I reworked the subject line and structure for the second, which recovered to 32.3%.</p>
+  <p>The subject lines explain most of the difference. The seasonal one opened at 18.9%. The two that named a specific problem with the reader&rsquo;s own training opened at 38.5% and 32.3%.</p>
   <table>
     <thead>
-      <tr><th>Edition</th><th class="num">Sent to (approx.)</th><th class="num">Opens</th><th class="num">Clicks</th></tr>
+      <tr><th>Edition and subject line, translated from Estonian</th><th class="num">Sent to (approx.)</th><th class="num">Opens</th><th class="num">Clicks</th></tr>
     </thead>
     <tbody>
-      <tr><td>August 2026</td><td class="num">470</td><td class="num">38.5%</td><td class="num">2.6%</td></tr>
-      <tr><td>September 2026</td><td class="num">570</td><td class="num">18.9%</td><td class="num">1.1%</td></tr>
-      <tr><td>September 2026, second edition</td><td class="num">610</td><td class="num">32.3%</td><td class="num">1.0%</td></tr>
+      <tr><td>August 2026<i>Your plank needs fixing</i></td><td class="num">470</td><td class="num">38.5%</td><td class="num">2.6%</td></tr>
+      <tr><td>September 2026<i>Autumn shortens your days, not your progress</i></td><td class="num">570</td><td class="num">18.9%</td><td class="num">1.1%</td></tr>
+      <tr><td>September 2026, second edition<i>The side plank reveals your weakest ab muscle</i></td><td class="num">610</td><td class="num">32.3%</td><td class="num">1.0%</td></tr>
     </tbody>
   </table>
-  <p class="label note">Work for a digital products client in health and fitness, written and built by me in Mailchimp. The client is anonymised, audience sizes are rounded, and all rates are from the platform&rsquo;s own reporting.</p>
+  <p class="label note">Work for a digital products client in health and fitness, written and built by me in Mailchimp. The emails were sent in Estonian. The client is anonymised, audience sizes are rounded, and all rates are from the platform&rsquo;s own reporting.</p>
 </article>
 
 <article class="piece" id="waitlist" data-title="Waitlist launch">
@@ -122,7 +148,7 @@
   <p>The goal was to measure interest in a new product before launch and build a warm audience for it. The email went to about 580 subscribers.</p>
   <p>I wrote the invitation, set up the waitlist sign-up and tagged everyone who joined so the launch could go to them first.</p>
   <p>22.5% opened, 3.5% clicked, and only 0.3% unsubscribed.</p>
-  <p class="label note">Work for a digital products client in health and fitness, written and built by me in Mailchimp. The client is anonymised, audience sizes are rounded, and all rates are from the platform&rsquo;s own reporting.</p>
+  <p class="label note">Work for a digital products client in health and fitness, written and built by me in Mailchimp. The emails were sent in Estonian. The client is anonymised, audience sizes are rounded, and all rates are from the platform&rsquo;s own reporting.</p>
 </article>
 
       </div>
