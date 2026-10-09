@@ -68,7 +68,8 @@ p { margin: 0 0 1.15em; }
 .name { font-size: 1.45rem; font-weight: 500; text-decoration: none; letter-spacing: 0.005em; }
 .nav { display: flex; gap: 2rem; font-family: var(--sans); font-size: 0.95rem; font-weight: 600; }
 .nav { align-items: center; }
-.theme { background: none; border: 0; padding: 0.3rem; margin: -0.3rem; color: var(--ink); cursor: pointer; display: inline-flex; border-radius: 50%; }
+.brand { display: flex; align-items: center; gap: 1rem; }
+.theme { background: none; border: 0; padding: 0.3rem; margin: 0; color: var(--muted); cursor: pointer; display: inline-flex; border-radius: 50%; }
 .theme:hover { color: var(--accent); }
 .theme .sun, :root[data-theme="dark"] .theme .moon { display: none; }
 :root[data-theme="dark"] .theme .sun { display: block; }
