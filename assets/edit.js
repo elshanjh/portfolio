@@ -20,11 +20,11 @@
   // ---------- small UI bar ----------
   var style = document.createElement("style");
   style.textContent =
-    ".ed-bar{position:fixed;left:0;right:0;bottom:0;z-index:999;background:#16201d;color:#f3f4f0;font:500 14px/1.4 'Instrument Sans',Arial,sans-serif;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;box-shadow:0 -2px 12px rgba(0,0,0,.25)}" +
-    ".ed-bar button{font:600 14px 'Instrument Sans',Arial,sans-serif;border:0;border-radius:4px;padding:8px 14px;cursor:pointer;background:#f3f4f0;color:#16201d}" +
+    ".ed-bar{position:fixed;left:0;right:0;bottom:0;z-index:999;background:#16201d;color:#f3f4f0;font:500 14px/1.4 'Hanken Grotesk',Arial,sans-serif;padding:10px 16px;display:flex;gap:10px;align-items:center;flex-wrap:wrap;box-shadow:0 -2px 12px rgba(0,0,0,.25)}" +
+    ".ed-bar button{font:600 14px 'Hanken Grotesk',Arial,sans-serif;border:0;border-radius:4px;padding:8px 14px;cursor:pointer;background:#f3f4f0;color:#16201d}" +
     ".ed-bar button.ed-quiet{background:transparent;color:#f3f4f0;border:1px solid #5d6a66}" +
     ".ed-bar button:disabled{opacity:.5;cursor:default}" +
-    ".ed-bar input{font:14px 'Instrument Sans',Arial,sans-serif;padding:8px 10px;border-radius:4px;border:1px solid #5d6a66;background:#0f1614;color:#f3f4f0;min-width:230px;flex:1}" +
+    ".ed-bar input{font:14px 'Hanken Grotesk',Arial,sans-serif;padding:8px 10px;border-radius:4px;border:1px solid #5d6a66;background:#0f1614;color:#f3f4f0;min-width:230px;flex:1}" +
     ".ed-msg{flex:1;min-width:180px}" +
     ".ed-on [data-ed]{outline:1px dashed rgba(110,31,42,.45);outline-offset:3px;border-radius:2px;cursor:text}" +
     ".ed-on [data-ed]:hover{outline-color:#6e1f2a}" +
