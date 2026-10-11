@@ -12,9 +12,22 @@
   font-display: swap;
 }
 @font-face {
-  font-family: "Hanken Grotesk";
-  src: url("fonts/hanken-grotesk-latin-wght-normal.woff2") format("woff2");
-  font-weight: 400 700;
+  font-family: "iA Writer Quattro";
+  src: url("fonts/ia-writer-quattro-latin-400-normal.woff2") format("woff2");
+  font-weight: 400;
+  font-display: swap;
+}
+@font-face {
+  font-family: "iA Writer Quattro";
+  src: url("fonts/ia-writer-quattro-latin-400-italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+@font-face {
+  font-family: "iA Writer Quattro";
+  src: url("fonts/ia-writer-quattro-latin-700-normal.woff2") format("woff2");
+  font-weight: 700;
   font-display: swap;
 }
 
@@ -25,7 +38,7 @@
   --line: #e3e4de;
   --accent: #6e1f2a;
   --serif: "Brygada 1918", Georgia, "Times New Roman", serif;
-  --sans: "Hanken Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --sans: "iA Writer Quattro", "Helvetica Neue", Arial, sans-serif;
   --bar: #d5d7d0;
   --underline: #b9bcb5;
   color-scheme: light;
@@ -285,3 +298,23 @@ body.book { --bg: #f4f0e4; --line: #dcd6c4; --muted: #746d5f; --ink: #2a2520; ba
 }
 
 @media print { .top, .foot, .list, .pager { display: none; } }
+
+/* ---------- Work pages are set in the writer's sans; stories keep the book serif ---------- */
+body:not(.book) { --serif: "iA Writer Quattro", "Helvetica Neue", Arial, sans-serif; font-size: 1rem; line-height: 1.62; font-variant-numeric: normal; }
+.name { font-family: var(--sans); font-weight: 700; font-size: 1.15rem; letter-spacing: -0.01em; }
+body:not(.book) h1, body:not(.book) .two b, body:not(.book) .picks b { font-weight: 700; letter-spacing: -0.03em; }
+body:not(.book) .statement { font-weight: 700; letter-spacing: -0.04em; line-height: 1.02; font-size: clamp(1.8rem, 8.2vw, 6.2rem); }
+body:not(.book) .list h2, body:not(.book) .pager a, body:not(.book) .list .other, body:not(.book) .endline { font-style: normal; }
+body:not(.book) .list h2 { font-weight: 700; font-size: 1.2rem; }
+body:not(.book) .list ul a { font-size: 0.98rem; }
+body:not(.book) .piece .lead { font-size: 1.3rem; line-height: 1.45; }
+body:not(.book) .picks b { font-size: 1.2rem; }
+body:not(.book) .picks span { font-size: 0.98rem; }
+body:not(.book) .two span { font-size: 1rem; }
+body:not(.book) .pager a { font-weight: 700; font-size: 1.05rem; }
+body:not(.book) .picks-title { font-family: var(--sans); font-variant-caps: normal; letter-spacing: 0; font-size: 0.8rem; font-weight: 700; }
+.nav, .foot, .jump, .all-m, .piece h2, .flow b { font-weight: 700; }
+@media (max-width: 820px) {
+  body:not(.book) .piece .lead { font-size: 1.15rem; }
+  body:not(.book) .list ul a { font-size: 1.05rem; }
+}
