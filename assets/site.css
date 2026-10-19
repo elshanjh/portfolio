@@ -172,6 +172,8 @@ td i { display: block; color: var(--muted); font-size: 1rem; }
 
 
 .piece .picks-title { font-family: var(--serif); font-weight: 400; font-variant-caps: all-small-caps; letter-spacing: 0.14em; font-size: 1.05rem; color: var(--ink); margin: 2.75rem 0 0.7rem; }
+.piece .picks-group { font-family: var(--sans); font-size: 0.8rem; font-weight: 400; color: var(--muted); letter-spacing: 0; margin: 1.75rem 0 0.5rem; }
+.piece .picks-title + .picks-group { margin-top: 0; }
 .piece .picks { margin: 0; border-top: 1px solid var(--ink); }
 .piece .picks li { padding: 0; margin: 0; border-bottom: 1px solid var(--line); }
 .piece .picks li::before { content: none; }
