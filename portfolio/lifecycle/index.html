@@ -12,6 +12,7 @@
   <meta property="og:type" content="website">
   <link rel="preload" href="../../assets/fonts/brygada-1918-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="../../assets/site.css?v=b7274e78">
+  <style>#rider-reactivation td { vertical-align: top; } #rider-reactivation td + td, #rider-reactivation th + th { padding-left: 1.25rem; width: 45%; }</style>
   <script>document.documentElement.className = "js";(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="dark"&&t!=="light")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)})();</script>
 </head>
 <body>
@@ -52,6 +53,10 @@
         <ul>
           <li><a href="#kyno">KYNO newsletter</a></li>
         </ul>
+        <h3>Spec concepts</h3>
+        <ul>
+          <li><a href="#rider-reactivation">Rider reactivation flow</a></li>
+        </ul>
         <a class="other" href="../copywriting/">Copywriting</a>
       </aside>
       <div class="pieces">
@@ -72,6 +77,10 @@
   <h3 class="picks-group">KYNO, the film platform I co-founded</h3>
   <ul class="picks">
     <li><a href="#kyno"><b>KYNO newsletter, built from scratch</b><span>A welcome email and a monthly film newsletter, set up on my own in Brevo.</span></a></li>
+  </ul>
+  <h3 class="picks-group">Spec concepts, written without a client</h3>
+  <ul class="picks">
+    <li><a href="#rider-reactivation"><b>Rider reactivation flow for Bolt</b><span>Email, push and in-app messages for riders who stopped riding, timed to the moments a ride actually helps.</span></a></li>
   </ul>
   <p class="label note">The health and fitness client is anonymised, its audience sizes are rounded, and its rates are from Mailchimp&rsquo;s own reporting. KYNO figures are from Brevo.</p>
 </article>
@@ -218,6 +227,46 @@
 
   <h2>First issue</h2>
   <p>The first issue, &ldquo;The first issue of Kino g&uuml;nd&#601;liyi is here!&rdquo;, went out on 18 October to the first 24 subscribers. All were delivered, 17 opened it, 3 clicked through and nobody unsubscribed. Brevo&rsquo;s open count includes Apple Mail privacy opens, so clicks are the number I track as the list grows.</p>
+</article>
+
+<article class="piece" id="rider-reactivation" data-title="Rider reactivation flow">
+  <a class="back-m" href="./">All lifecycle and email pieces</a>
+  <h1>Rider reactivation flow for Bolt</h1>
+  <p class="label">Spec concept, October 2026. Written without a client and not affiliated with Bolt</p>
+  <p class="lead">A three-step flow for riders who haven&rsquo;t taken a ride in 30 days. Instead of asking them to come back at random times, each message arrives at a moment when a ride actually solves a problem: rain, a match night, the evening rush.</p>
+  <p>I read almost every email I get, and when one makes me click, I go back and work out why. Usually it arrived at the right moment. That is the idea behind this flow. People who stop riding rarely need to be convinced that taxis exist. They need a reason today.</p>
+  <p>The audience is riders with at least three rides in the 60 days before they went quiet. 10% of them get no messages at all, so the flow can be judged against riders who would have come back anyway. Any rider who books a ride leaves the flow straight away.</p>
+
+  <h2>How it is built</h2>
+  <ol class="flow">
+    <li><b>Day 30, email</b>A light reminder with no discount. Many riders haven&rsquo;t left, they have just drifted, and a short friendly email costs nothing.</li>
+    <li><b>Branch for bad last trips</b>Riders whose last ride went wrong, such as a low rating, a driver cancellation or a long wait, get a different email instead. It asks what happened, with one-tap answers, and offers the next ride free up to &euro;5. Each answer leads to its own follow-up.</li>
+    <li><b>Day 33, push</b>Only if there is still no ride. Sent on a trigger instead of a fixed date: bad weather, a big event in the rider&rsquo;s city, or the evening rush.</li>
+    <li><b>Day 37 onward, in-app</b>Shown the next time the rider opens the app without booking. This is the only step with a discount, 20% off one ride, because these riders are interested but something is stopping them.</li>
+    <li><b>Rules</b>No more than one message from the flow every three days. Riders with an open support ticket are left out until it is answered.</li>
+  </ol>
+
+  <h2>The messages</h2>
+  <table>
+    <thead>
+      <tr><th>Step and copy</th><th>A/B test</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Email<i>Where are you headed this week, {first_name}?</i></td><td>Against a live subject line, &ldquo;A ride is about {eta} minutes from your door&rdquo;. Judged on rides within seven days, not opens.</td></tr>
+      <tr><td>Email, bad last trip<i>Your last ride wasn&rsquo;t great. Can you tell us why?</i></td><td>Against the standard reminder, for riders with a bad last trip.</td></tr>
+      <tr><td>Push, rain<i>Rain is on its way. Skip the wet walk home.</i></td><td rowspan="3">Context triggers against a fixed send on Thursday at 17:30. Judged on rides within 24 hours.</td></tr>
+      <tr><td>Push, match night<i>Estonia play at home tonight. Get dropped right at the gate.</i></td></tr>
+      <tr><td>Push, evening rush<i>The bus is full. Your ride isn&rsquo;t.</i></td></tr>
+      <tr><td>In-app<i>Welcome back. Here&rsquo;s 20% off your next ride.</i></td><td>Against the same message with no discount. Shows whether the money brings riders back or goes to people who would ride anyway.</td></tr>
+    </tbody>
+  </table>
+
+  <p>On match nights prices rise and waits get longer, which is a bad first ride back for someone who already drifted away. So the match push goes out early in the day and asks the rider to book before kick-off. Only riders who live in the city, or have ridden near the stadium before, receive it.</p>
+
+  <h2>What I would measure</h2>
+  <p>The main number is how many riders take a ride within 14 days, compared with the 10% who got nothing. After that: which step brought them back, how many are still riding 30 days later, the discount cost per returning rider, and unsubscribes and push opt-outs, so the flow doesn&rsquo;t lose a channel to win back one ride.</p>
+
+  <p>What I would test next: riders who still ride but less often could get personal stats instead of reminders, such as &ldquo;You took 14 rides last spring. Scooters are back.&rdquo; People like facts about themselves more than facts about a brand.</p>
 </article>
 
       </div>
