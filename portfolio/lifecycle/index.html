@@ -56,7 +56,6 @@
         <h3>Spec concepts</h3>
         <ul>
           <li><a href="#rider-reactivation">Rider reactivation flow</a></li>
-          <li><a href="#low-rating-apology">Apology after a low rating</a></li>
         </ul>
         <a class="other" href="../copywriting/">Copywriting</a>
       </aside>
@@ -82,7 +81,6 @@
   <h3 class="picks-group">Spec concepts, written without a client</h3>
   <ul class="picks">
     <li><a href="#rider-reactivation"><b>Rider reactivation flow for Bolt</b><span>Email, push and in-app messages for riders who stopped riding, with a discount only at the end.</span></a></li>
-    <li><a href="#low-rating-apology"><b>Apology after a low rating, for Bolt</b><span>One email that answers the reason a rider gave for a bad trip.</span></a></li>
   </ul>
   <p class="label note">The health and fitness client is anonymised, its audience sizes are rounded, and its rates are from Mailchimp&rsquo;s own reporting. KYNO figures are from Brevo.</p>
 </article>
@@ -264,34 +262,6 @@
   <p>The main number is how many riders take a ride within 14 days, compared with the 10% who got nothing. I would also watch unsubscribes and push opt-outs, because losing someone&rsquo;s email or push permission costs more than one ride.</p>
 </article>
 
-<article class="piece" id="low-rating-apology" data-title="Apology after a low rating">
-  <a class="back-m" href="./">All lifecycle and email pieces</a>
-  <h1>Apology after a low rating, for Bolt</h1>
-  <p class="label">Spec concept, October 2026. Written without a client and not affiliated with Bolt</p>
-  <p class="lead">One email the day after a rider gives a trip two stars or less, so a bad ride doesn&rsquo;t become the reason they stop riding.</p>
-  <p>When riders rate a trip badly, they usually say why. The email answers that reason instead of asking again, apologises, and gives them a reason to try once more.</p>
-
-  <h2>How it is built</h2>
-  <ol class="flow">
-    <li><b>Start</b>A rating of two stars or less.</li>
-    <li><b>Next day</b>An email that names the reason the rider gave and offers their next ride free, up to &euro;5.</li>
-    <li><b>No reason given</b>The same apology, with one-tap answers asking what went wrong.</li>
-    <li><b>End</b>A tag on the rider, so later messages know their last trip went badly.</li>
-  </ol>
-
-  <h2>The email</h2>
-  <table>
-    <thead>
-      <tr><th>Subject and text</th></tr>
-    </thead>
-    <tbody>
-      <tr><td>Subject<i>Sorry about your last ride, {first_name}</i></td></tr>
-      <tr><td>Text<i>You told us the car wasn&rsquo;t clean. You deserved better, and we&rsquo;re sorry. Thank you for telling us, it helps us fix things like this. Your next ride is on us, up to &euro;5.</i></td></tr>
-    </tbody>
-  </table>
-
-  <p>I would measure it against low-rated riders who got no email: how many ride again within 30 days, and whether the free ride pays for itself. The first test would be the same email with and without the free ride.</p>
-</article>
 
       </div>
     </div>
