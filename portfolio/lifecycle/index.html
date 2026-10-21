@@ -80,7 +80,7 @@
   </ul>
   <h3 class="picks-group">Spec concepts, written without a client</h3>
   <ul class="picks">
-    <li><a href="#rider-reactivation"><b>Rider reactivation flow for Bolt</b><span>Email, push and in-app messages for riders who stopped riding, timed to the moments a ride actually helps.</span></a></li>
+    <li><a href="#rider-reactivation"><b>Rider reactivation flow for Bolt</b><span>A reactivation flow for riders who stopped riding, and messages timed to the moments a ride actually helps.</span></a></li>
   </ul>
   <p class="label note">The health and fitness client is anonymised, its audience sizes are rounded, and its rates are from Mailchimp&rsquo;s own reporting. KYNO figures are from Brevo.</p>
 </article>
@@ -233,36 +233,46 @@
   <a class="back-m" href="./">All lifecycle and email pieces</a>
   <h1>Rider reactivation flow for Bolt</h1>
   <p class="label">Spec concept, October 2026. Written without a client and not affiliated with Bolt</p>
-  <p class="lead">A three-step flow for riders who haven&rsquo;t taken a ride in 30 days. Each message is sent when a ride is actually useful, like when it rains or there&rsquo;s a match in town.</p>
-  <p>I use Bolt myself. Whenever I have tapped one of its notifications, it was because at that moment I really needed a ride. That is the idea behind this flow. People who stopped riding already know the app. What they need is a good reason to open it.</p>
-  <p>The flow is for riders who took at least three rides before they went quiet. 10% of them get no messages, so the results can be compared with riders who would have come back anyway. Anyone who books a ride leaves the flow straight away.</p>
+  <p class="lead">A three-step flow for riders who haven&rsquo;t taken a ride in 30 days, and a set of messages sent at the moments when a ride is actually useful, like when it rains or there&rsquo;s a match in town.</p>
+  <p>I use Bolt myself. Whenever I have tapped one of its notifications, it was because at that moment I really needed a ride. That is the idea behind this piece. People who stopped riding already know the app. What they need is a good reason to open it.</p>
 
-  <h2>How it is built</h2>
+  <h2>The reactivation flow</h2>
+  <p>The flow is for riders who took at least three rides before they went quiet. 10% of them get no messages, so the results can be compared with riders who would have come back anyway. Anyone who books a ride leaves the flow straight away.</p>
   <ol class="flow">
-    <li><b>Day 30, email</b>A light reminder with no discount. Riders who gave their last trip a low rating get a different email. It apologises for the reason they gave, thanks them for telling us, and offers their next ride free up to &euro;5. Only riders who left no reason are asked what happened, with one-tap answers.</li>
-    <li><b>Day 33, push</b>Only if there is still no ride. It goes out when there is a reason to ride: rain, a match or concert in the rider&rsquo;s city, or the evening rush.</li>
+    <li><b>Day 30, email</b>A light reminder with no discount. Many riders haven&rsquo;t left, they have just drifted, and a short friendly email costs nothing.</li>
+    <li><b>Day 33, push</b>Only if there is still no ride. This push has no text of its own. It uses whichever moment message below comes up first, so a lapsed rider gets the rain push if it rains, or the match push on a game day.</li>
     <li><b>Day 37 onward, in-app</b>Shown the next time the rider opens the app without booking. This is the only step with a discount, because these riders are interested but something is stopping them.</li>
   </ol>
-  <p>The flow sends no more than one message every three days, and riders with an open support ticket are left out until it is answered.</p>
-
-  <h2>The messages</h2>
   <table>
     <thead>
       <tr><th>Message</th><th>When</th></tr>
     </thead>
     <tbody>
       <tr><td>Email<i>Where are you headed this week, {first_name}?</i></td><td>Day 30</td></tr>
-      <tr><td>Email, after a bad trip<i>Sorry about Friday, {first_name}</i></td><td>Day 30</td></tr>
-      <tr><td>Push, rain<i>Rain is on its way. No need to get home wet.</i></td><td>A rainy evening after day 33</td></tr>
-      <tr><td>Push, match night<i>Estonia vs Iceland tonight. Get dropped right at the A. Le Coq Arena gate.</i></td><td>The morning of a home match</td></tr>
-      <tr><td>Push, evening rush<i>Get home before the evening traffic jams up.</i></td><td>A weekday evening</td></tr>
+      <tr><td>Push<i>The first moment message that applies</i></td><td>From day 33</td></tr>
       <tr><td>In-app<i>Welcome back. Here&rsquo;s 20% off your next ride.</i></td><td>Next app open from day 37</td></tr>
     </tbody>
   </table>
+
+  <h2>Messages for the right moment</h2>
+  <p>These are separate ideas, not steps. Each one has its own trigger and can go to any rider, active or not.</p>
+  <table>
+    <thead>
+      <tr><th>Message</th><th>When</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Email, after a low rating<i>Sorry about Friday, {first_name}</i></td><td>The day after a rating of two stars or less</td></tr>
+      <tr><td>Push, rain<i>Rain is on its way. No need to get home wet.</i></td><td>A rainy evening in the rider&rsquo;s city</td></tr>
+      <tr><td>Push, match day<i>Estonia vs Iceland tonight. Get dropped right at the A. Le Coq Arena gate.</i></td><td>The morning of a home match</td></tr>
+      <tr><td>Push, evening traffic<i>Get home before the evening traffic jams up.</i></td><td>A weekday afternoon</td></tr>
+    </tbody>
+  </table>
+  <p>The apology names the reason the rider gave, thanks them for telling us, and offers their next ride free up to &euro;5. Riders already told Bolt what went wrong, so the email doesn&rsquo;t ask again. Only riders who left no reason get a one-tap question.</p>
   <p>The match push goes out in the morning, not before kick-off. Prices rise and waits get longer around a game, and that would be a bad first ride back.</p>
+  <p>No rider gets more than one message every three days, so a rainy match day doesn&rsquo;t mean three notifications.</p>
 
   <h2>What I would test</h2>
-  <p>First, the in-app message with and without the discount. If riders come back just as often without it, the money is better spent elsewhere. Second, the pushes sent on a trigger against the same push at a fixed time, to see if the timing is worth the extra work.</p>
+  <p>First, the in-app message with and without the discount. If riders come back just as often without it, the money is better spent elsewhere. Second, the moment pushes against the same push at a fixed time, to see if the timing is worth the extra work.</p>
   <p>The main number is how many riders take a ride within 14 days, compared with the 10% who got nothing. I would also watch unsubscribes and push opt-outs, because losing someone&rsquo;s email or push permission costs more than one ride.</p>
 
   <p>What I would try next: riders who still ride but less often could get personal stats instead of reminders, such as &ldquo;You took 14 rides last spring. Scooters are back.&rdquo;</p>
