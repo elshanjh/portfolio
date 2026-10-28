@@ -12,6 +12,21 @@
   <link rel="preload" href="../../assets/fonts/brygada-1918-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="stylesheet" href="../../assets/site.css?v=b7274e78">
   <style>#rider-reactivation td { vertical-align: top; } #rider-reactivation td + td, #rider-reactivation th + th { padding-left: 1.25rem; width: 35%; }</style>
+  <style>
+    #esto .diagram { margin: 2.5rem 0; }
+    #esto .diagram svg { width: 100%; max-width: 30rem; height: auto; display: block; font-family: var(--sans); }
+    #esto .diagram .t { fill: var(--ink); font-size: 15px; font-weight: 700; }
+    #esto .diagram .s { fill: var(--muted); font-size: 13px; }
+    #esto .diagram .k { fill: var(--ink); font-size: 13px; }
+    #esto .diagram .ai { fill: var(--bar); stroke: none; }
+    #esto .diagram .hu { fill: none; stroke: var(--accent); stroke-width: 2; }
+    #esto .diagram .ru { fill: none; stroke: var(--muted); stroke-width: 1.25; }
+    #esto .diagram .ln { fill: none; stroke: var(--muted); stroke-width: 1.25; }
+    #esto .diagram .hd { fill: var(--muted); }
+    #esto .roles dt { font-family: var(--sans); font-size: 0.8rem; font-weight: 700; margin-top: 1.4rem; }
+    #esto .roles dd { margin: 0.2rem 0 0; }
+    #esto .roles dd span { font-family: var(--sans); font-size: 0.8rem; color: var(--muted); margin-right: 0.35rem; }
+  </style>
   <script>document.documentElement.className = "js";(function(){var t;try{t=localStorage.getItem("theme")}catch(e){}if(t!=="dark"&&t!=="light")t=window.matchMedia&&matchMedia("(prefers-color-scheme: dark)").matches?"dark":"light";document.documentElement.setAttribute("data-theme",t)})();</script>
 </head>
 <body>
@@ -55,7 +70,7 @@
         <h3>Spec concepts</h3>
         <ul>
           <li><a href="#rider-reactivation">Rider reactivation flow</a></li>
-          <li><a href="../esto/">Agentic flow for ESTO</a></li>
+          <li><a href="#esto">Agentic flow for ESTO</a></li>
         </ul>
         <a class="other" href="../copywriting/">Copywriting</a>
       </aside>
@@ -82,7 +97,7 @@
   <h3 class="picks-group">Spec concepts, written without a client</h3>
   <ul class="picks">
     <li><a href="#rider-reactivation"><b>Rider reactivation flow for Bolt</b><span>Email, push and in-app messages for riders who stopped riding, with a discount only at the end.</span></a></li>
-    <li><a href="../esto/"><b>Agentic lifecycle flow for ESTO</b><span>An AI-assisted flow from first purchase to second, where repayment comes first and people approve every new message.</span></a></li>
+    <li><a href="#esto"><b>Agentic lifecycle flow for ESTO</b><span>An AI-assisted flow from first purchase to second, where repayment comes first and people approve every new message.</span></a></li>
   </ul>
   <p class="label note">The health and fitness client is anonymised, its audience sizes are rounded, and its rates are from Mailchimp’s own reporting. KYNO figures are from Brevo.</p>
 </article>
@@ -264,6 +279,135 @@
   <h2>What I would test</h2>
   <p>First, the in-app message with and without the discount. If riders come back just as often without it, the money is better spent elsewhere. Second, the push with the rider’s own destination against a general one, to see if the personal detail is worth it.</p>
   <p>The main number is how many riders take a ride within 14 days, compared with the 10% who got nothing. I would also watch unsubscribes and push opt-outs, because losing someone’s email or push permission costs more than one ride.</p>
+</article>
+
+<article class="piece" id="esto" data-title="Agentic flow for ESTO">
+  <a class="back-m" href="./">All lifecycle and email pieces</a>
+  <h1>From first purchase to second: an agentic lifecycle flow for ESTO</h1>
+  <p class="label">Spec concept, October 2026. Built from public information for my application to ESTO’s Lifecycle Marketing Manager role. Not affiliated with ESTO</p>
+  <p class="lead">More first-time ESTO customers come back for a second purchase within 90 days, with no rise in missed payments. AI drafts, launches and watches. People approve the copy and decide every next test.</p>
+  <p>Most customers meet ESTO at a partner store’s checkout. They choose Pay Later, ESTO 3 or hire purchase, and leave. Lifecycle is where a one-time buyer can become a regular.</p>
+  <p>Every ESTO product is credit, so the flow is built around one rule: repayment comes first, the next purchase second. A customer only hears about a second purchase once their first plan is on track. That protects the customer, keeps Compliance comfortable, and brings back the repeat customers ESTO actually wants.</p>
+
+  <h2>The flow</h2>
+  <figure class="diagram">
+    <svg viewBox="0 0 480 856" role="img" aria-label="The flow: first purchase, build cohort, a repayment check, then a loop of drafting, review, launch, monitoring, results and a decision">
+      <defs><marker id="esto-hd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="hd" d="M0 0L10 5L0 10z"/></marker></defs>
+
+      <rect class="ai" x="0" y="6" width="14" height="14" rx="3"/><text class="k" x="22" y="18">AI owns</text>
+      <rect class="hu" x="112" y="6" width="14" height="14" rx="3"/><text class="k" x="134" y="18">Person reviews</text>
+      <rect class="ru" x="270" y="6" width="14" height="14" rx="3"/><text class="k" x="292" y="18">Event or fixed rule</text>
+
+      <g class="ln" marker-end="url(#esto-hd)">
+        <path d="M170 96V134"/>
+        <path d="M170 186V220"/>
+        <path d="M280 266H320"/>
+        <path d="M390 240V160H280"/>
+        <path d="M170 312V346"/>
+        <path d="M170 398V432"/>
+        <path d="M170 484V518"/>
+        <path d="M170 570V604"/>
+        <path d="M170 656V690"/>
+        <path d="M170 742V776"/>
+        <path d="M60 802H30V372H60"/>
+      </g>
+
+      <rect class="ru" x="60" y="44" width="220" height="52" rx="8"/>
+      <text class="t" x="170" y="66" text-anchor="middle">First purchase</text>
+      <text class="s" x="170" y="85" text-anchor="middle">any ESTO product</text>
+
+      <rect class="ai" x="60" y="134" width="220" height="52" rx="8"/>
+      <text class="t" x="170" y="156" text-anchor="middle">Build cohort</text>
+      <text class="s" x="170" y="175" text-anchor="middle">segment and context</text>
+
+      <polygon class="ru" points="60,266 170,220 280,266 170,312"/>
+      <text class="t" x="170" y="262" text-anchor="middle">First payment</text>
+      <text class="t" x="170" y="281" text-anchor="middle">on track?</text>
+
+      <rect class="ru" x="320" y="240" width="140" height="52" rx="8"/>
+      <text class="t" x="390" y="262" text-anchor="middle">Support</text>
+      <text class="s" x="390" y="281" text-anchor="middle">reminders, help</text>
+      <text class="s" x="300" y="258" text-anchor="middle">no</text>
+      <text class="s" x="398" y="204">re-check</text>
+      <text class="s" x="180" y="334">yes</text>
+
+      <rect class="ai" x="60" y="346" width="220" height="52" rx="8"/>
+      <text class="t" x="170" y="368" text-anchor="middle">Draft variants</text>
+      <text class="s" x="170" y="387" text-anchor="middle">email, SMS, push</text>
+
+      <rect class="hu" x="60" y="432" width="220" height="52" rx="8"/>
+      <text class="t" x="170" y="454" text-anchor="middle">Review</text>
+      <text class="s" x="170" y="473" text-anchor="middle">voice, language, compliance</text>
+
+      <rect class="ai" x="60" y="518" width="220" height="52" rx="8"/>
+      <text class="t" x="170" y="540" text-anchor="middle">Launch</text>
+      <text class="s" x="170" y="559" text-anchor="middle">with a holdout group</text>
+
+      <rect class="ai" x="60" y="604" width="220" height="52" rx="8"/>
+      <text class="t" x="170" y="626" text-anchor="middle">Monitor</text>
+      <text class="s" x="170" y="645" text-anchor="middle">alerts and auto-pause</text>
+
+      <rect class="ai" x="60" y="690" width="220" height="52" rx="8"/>
+      <text class="t" x="170" y="712" text-anchor="middle">Read results</text>
+      <text class="s" x="170" y="731" text-anchor="middle">propose the next test</text>
+
+      <rect class="hu" x="60" y="776" width="220" height="52" rx="8"/>
+      <text class="t" x="170" y="798" text-anchor="middle">Decide</text>
+      <text class="s" x="170" y="817" text-anchor="middle">next test, or stop</text>
+
+      <text class="s" x="22" y="590" text-anchor="middle" transform="rotate(-90 22 590)">new test brief</text>
+    </svg>
+    <figcaption>Customers who aren’t on track with their first payment get support, not offers, and are checked again later.</figcaption>
+  </figure>
+
+  <h2>What AI owns, what a person reviews</h2>
+  <p>AI takes the volume and the speed: data pulls, drafts, variants and daily monitoring. People keep anything that touches credit risk, legal claims, or the first send to real customers.</p>
+  <dl class="roles">
+    <dt>1. Build cohort</dt>
+    <dd><span>AI</span>Pulls first-purchase events and groups customers by product, store category and market.</dd>
+    <dd><span>Person</span>The lifecycle manager approves the segment definitions once. Data spot-checks the query.</dd>
+    <dt>2. Repayment check</dt>
+    <dd><span>AI</span>Nothing. Eligibility is a fixed set of rules, not a model.</dd>
+    <dd><span>Person</span>Compliance signs off the rules, and any change goes back to them.</dd>
+    <dt>3. Draft</dt>
+    <dd><span>AI</span>Copy variants per segment and channel, in each market’s languages, with the required credit wording.</dd>
+    <dd><span>Person</span>The lifecycle manager edits for voice, a native speaker checks each language, and Compliance approves any claim about fees or terms.</dd>
+    <dt>4. Launch</dt>
+    <dd><span>AI</span>Schedules the approved variants and sets up the holdout group.</dd>
+    <dd><span>Person</span>Approves the first send of every new variant. After that, AI only rotates approved variants.</dd>
+    <dt>5. Monitor</dt>
+    <dd><span>AI</span>Watches delivery, clicks, unsubscribes, complaints and payment status every day, and pauses any send that crosses an agreed limit.</dd>
+    <dd><span>Person</span>Gets the alert and decides whether to resume.</dd>
+    <dt>6. Learn</dt>
+    <dd><span>AI</span>Reads the results, writes a one-page summary and proposes the next test.</dd>
+    <dd><span>Person</span>Decides what to test next, or stops the flow.</dd>
+  </dl>
+  <p>The repayment check is not AI on purpose. Deciding who is ready to be offered more credit should be predictable, explainable and easy to audit. A set of rules is all three. A model writing copy is none of them.</p>
+
+  <h2>The first test</h2>
+  <p>The first test answers one question: does the flow cause extra second purchases, or would those customers have come back anyway?</p>
+  <ul>
+    <li>A share of eligible first-time customers, 10% to start, gets only the messages about their payments. Everyone else gets the flow.</li>
+    <li>The main number is a second purchase within 90 days. The lift is the gap between the flow group and the holdout, not the raw conversion rate.</li>
+    <li>Late or missed payments, unsubscribes and complaints are guardrails. If any of them gets worse in the flow group, the flow is not a win, whatever the lift.</li>
+    <li>Before launch, the team agrees the smallest lift worth acting on and works out the sample size from today’s baseline. That sets how long the test runs.</li>
+    <li>If the lift is significant and no guardrail gets worse, the flow stays and scales. If not, one thing changes and the test runs again.</li>
+  </ul>
+  <p>Once the flow proves it adds purchases, later tests compare versions of it. For example, a nudge after the first instalment is paid against a nudge only after the whole plan is repaid.</p>
+
+  <h2>Reporting and monitoring</h2>
+  <p>One dashboard follows each weekly group of new customers: first purchases by product and market, the share that passes the repayment check, second purchases at 30, 60 and 90 days against the holdout, the guardrails, and the cost of each extra second purchase by channel, so the budget follows what works.</p>
+  <p>On top of that, AI posts a short daily summary to the team channel, alerts a person when a number crosses its limit, and drafts the weekly results write-up for the lifecycle manager to edit before it goes to stakeholders. The data could run through the stack in the job post: RudderStack into Mixpanel or Databricks, with sends in Customer.io.</p>
+
+  <h2>What I would check with the team</h2>
+  <ul>
+    <li>Which product most first-time customers choose, and whether repeat behaviour differs by product</li>
+    <li>How many customers have given marketing consent, per channel and market</li>
+    <li>Which channels are live today, and what is already set up in the messaging platform</li>
+    <li>The rules Compliance applies to credit marketing in each Baltic market</li>
+    <li>Whether repeat purchases are the right first goal, or whether onboarding, repayment or reactivation matters more right now</li>
+  </ul>
+  <p class="label note">Product details are from ESTO’s public pages, <a href="https://esto.lv/en/buy-now-pay-later">Buy now, pay later</a> and <a href="https://esto.lv/b2b/en/">ESTO for merchants</a>. No internal ESTO data was used.</p>
 </article>
 
 
