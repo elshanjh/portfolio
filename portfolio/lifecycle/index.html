@@ -13,6 +13,17 @@
   <link rel="stylesheet" href="../../assets/site.css?v=b7274e78">
   <style>#rider-reactivation td { vertical-align: top; } #rider-reactivation td + td, #rider-reactivation th + th { padding-left: 1.25rem; width: 35%; }</style>
   <style>
+    #programme .diagram { margin: 2.5rem 0; }
+    #programme .diagram svg { width: 100%; max-width: 30rem; height: auto; display: block; font-family: var(--sans); }
+    #programme .diagram .t { fill: var(--ink); font-size: 15px; font-weight: 700; }
+    #programme .diagram .s { fill: var(--muted); font-size: 13px; }
+    #programme .diagram .k { fill: var(--ink); font-size: 13px; }
+    #programme .diagram .au { fill: var(--bar); stroke: none; }
+    #programme .diagram .one { fill: none; stroke: var(--muted); stroke-width: 1.25; }
+    #programme .diagram .ln { fill: none; stroke: var(--muted); stroke-width: 1.25; }
+    #programme .diagram .hd { fill: var(--muted); }
+  </style>
+  <style>
     #esto .diagram { margin: 2.5rem 0; }
     #esto .diagram svg { width: 100%; max-width: 30rem; height: auto; display: block; font-family: var(--sans); }
     #esto .diagram .t { fill: var(--ink); font-size: 15px; font-weight: 700; }
@@ -56,6 +67,7 @@
         </ul>
         <h3>Freelance client work</h3>
         <ul>
+          <li><a href="#programme">The full programme</a></li>
           <li><a href="#challenge">Fourteen-day challenge</a></li>
           <li><a href="#welcome-series">Founder story welcome series</a></li>
           <li><a href="#survey">Customer survey campaign</a></li>
@@ -83,6 +95,7 @@
   <h2 class="picks-title">Contents</h2>
   <h3 class="picks-group">Freelance client work</h3>
   <ul class="picks">
+    <li><a href="#programme"><b>The full programme, from signup to paid programme</b><span>How the six pieces below fit together into one lifecycle, and what I would build differently.</span></a></li>
     <li><a href="#challenge"><b>Fourteen-day challenge for existing buyers</b><span>12 of about 280 buyers upgraded to the paid programme, from a series that sold in only one email out of three.</span></a></li>
     <li><a href="#welcome-series"><b>Founder story welcome series</b><span>Ten automated emails that tell the founder’s story, with no selling. The first opened at 30.0%.</span></a></li>
     <li><a href="#survey"><b>Customer survey campaign</b><span>A 17.0% click rate, and answers that shaped the client&rsquo;s next product.</span></a></li>
@@ -100,6 +113,109 @@
     <li><a href="#esto"><b>Agentic lifecycle flow for ESTO</b><span>An AI-assisted flow from first purchase to second, where repayment comes first and people approve every new message.</span></a></li>
   </ul>
   <p class="label note">The health and fitness client is anonymised, its audience sizes are rounded, and its rates are from Mailchimp’s own reporting. KYNO figures are from Brevo.</p>
+</article>
+
+<article class="piece" id="programme" data-title="The full programme">
+  <a class="back-m" href="./">All lifecycle and email pieces</a>
+  <h1>The full programme, from signup to paid programme</h1>
+  <p class="label">Lifecycle programme, Mailchimp, three months</p>
+  <p class="lead">For a health and fitness client, I wrote and built 35+ emails across 10+ automated Mailchimp journeys, sent in Estonian. Each piece on this page covers one part. This one shows how they worked together, from a first signup to the paid programme.</p>
+  <p>The client sold an entry-level product, a cookbook and a paid programme. The goal was a clear path from first signup to the paid programme that didn&rsquo;t wear out the list, and a way to hear from customers so their answers could shape what came next.</p>
+
+  <h2>The journey</h2>
+  <figure class="diagram">
+    <svg viewBox="0 0 480 548" role="img" aria-label="Automated journeys from entry sequences to welcome series, monthly newsletter, first purchase, 14-day challenge and paid programme, with a customer survey, waitlist and name A/B test as one-off campaigns alongside">
+      <defs><marker id="prog-hd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="hd" d="M0 0L10 5L0 10z"/></marker></defs>
+
+      <rect class="au" x="0" y="6" width="14" height="14" rx="3"/><text class="k" x="22" y="18">Automated journey</text>
+      <rect class="one" x="170" y="6" width="14" height="14" rx="3"/><text class="k" x="192" y="18">One-off campaign</text>
+
+      <g class="ln" marker-end="url(#prog-hd)">
+        <path d="M130 96V130"/>
+        <path d="M130 182V216"/>
+        <path d="M130 268V302"/>
+        <path d="M130 354V388"/>
+        <path d="M130 440V474"/>
+      </g>
+
+      <rect class="au" x="20" y="44" width="220" height="52" rx="8"/>
+      <text class="t" x="130" y="66" text-anchor="middle">Entry sequences</text>
+      <text class="s" x="130" y="85" text-anchor="middle">three ways in</text>
+      <text class="s" x="140" y="118">tag on finish</text>
+
+      <rect class="au" x="20" y="130" width="220" height="52" rx="8"/>
+      <text class="t" x="130" y="152" text-anchor="middle">Welcome series</text>
+      <text class="s" x="130" y="171" text-anchor="middle">10 emails, no selling</text>
+      <text class="s" x="140" y="204">&ldquo;completed&rdquo; tag</text>
+
+      <rect class="au" x="20" y="216" width="220" height="52" rx="8"/>
+      <text class="t" x="130" y="238" text-anchor="middle">Monthly newsletter</text>
+      <text class="s" x="130" y="257" text-anchor="middle">to the whole list</text>
+
+      <rect class="au" x="20" y="302" width="220" height="52" rx="8"/>
+      <text class="t" x="130" y="324" text-anchor="middle">First purchase</text>
+      <text class="s" x="130" y="343" text-anchor="middle">entry-level product</text>
+      <text class="s" x="140" y="376">buyer tag</text>
+
+      <rect class="au" x="20" y="388" width="220" height="52" rx="8"/>
+      <text class="t" x="130" y="410" text-anchor="middle">14-day challenge</text>
+      <text class="s" x="130" y="429" text-anchor="middle">two value emails, one offer</text>
+      <text class="s" x="140" y="462">12 upgraded</text>
+
+      <rect class="au" x="20" y="474" width="220" height="52" rx="8"/>
+      <text class="t" x="130" y="496" text-anchor="middle">Paid programme</text>
+      <text class="s" x="130" y="515" text-anchor="middle">the upgrade</text>
+
+      <rect class="one" x="280" y="216" width="190" height="52" rx="8"/>
+      <text class="t" x="375" y="238" text-anchor="middle">Customer survey</text>
+      <text class="s" x="375" y="257" text-anchor="middle">&ldquo;responded&rdquo; tag</text>
+
+      <rect class="one" x="280" y="302" width="190" height="52" rx="8"/>
+      <text class="t" x="375" y="324" text-anchor="middle">Waitlist</text>
+      <text class="s" x="375" y="343" text-anchor="middle">launch goes here first</text>
+
+      <rect class="one" x="280" y="474" width="190" height="52" rx="8"/>
+      <text class="t" x="375" y="496" text-anchor="middle">Name A/B test</text>
+      <text class="s" x="375" y="515" text-anchor="middle">programme renamed</text>
+    </svg>
+    <figcaption>Simplified. The newsletter goes to the whole list, and people can buy at any point.</figcaption>
+  </figure>
+
+  <h2>How the stages connect</h2>
+  <ol class="flow">
+    <li><b>Entry</b>New subscribers come in through one of three entry sequences. Finishing any of them applies a tag that starts the welcome series.</li>
+    <li><b>Welcome</b>Ten emails tell the founder&rsquo;s story, with no selling. A &ldquo;completed&rdquo; tag marks who read the whole story.</li>
+    <li><b>Engagement</b>A monthly newsletter keeps the whole list warm between launches.</li>
+    <li><b>Listening</b>A survey asks customers what they want next. Responders are tagged, and their answers shaped the client&rsquo;s next product.</li>
+    <li><b>Launch</b>A waitlist invitation builds a warm audience before a new product goes live. Everyone who joins is tagged, so the launch reaches them first.</li>
+    <li><b>Upsell</b>Buyers of the entry-level product enter a 14-day challenge that moves them toward the paid programme, with entry conditions that filter who can come in.</li>
+    <li><b>Optimisation</b>An A/B test on the programme&rsquo;s name checks who the offer speaks to.</li>
+  </ol>
+  <p>Tags are what hold it together. Each one records something a contact did, so every campaign goes to the people it is meant for, not to the whole list.</p>
+
+  <h2>Results at each stage</h2>
+  <table>
+    <thead>
+      <tr><th>Stage</th><th>Result</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Welcome<i><a href="#welcome-series">Founder story welcome series</a></i></td><td>First email opened at 30.0%, against an account average of about 25%. The strongest reached 47.8%.</td></tr>
+      <tr><td>Engagement<i><a href="#newsletters">Monthly newsletters</a></i></td><td>The list grew about 30%, from roughly 470 to 610 subscribers.</td></tr>
+      <tr><td>Listening<i><a href="#survey">Customer survey campaign</a></i></td><td>A 17.0% click rate, about six times the campaign average.</td></tr>
+      <tr><td>Launch<i><a href="#waitlist">Waitlist launch</a></i></td><td>8 of the 20 people on the waitlist bought, a 40% conversion.</td></tr>
+      <tr><td>Upsell<i><a href="#challenge">Fourteen-day challenge</a></i></td><td>About 4.3% of buyers upgraded, with unsubscribes averaging 0.7% per email.</td></tr>
+      <tr><td>Optimisation<i><a href="#name-test">Product name A/B test</a></i></td><td>The client renamed the programme across the whole business.</td></tr>
+    </tbody>
+  </table>
+
+  <h2>Looking back</h2>
+  <p>The programme covered the path from signup to upsell. Looking back, it was missing three journeys I would build first next time:</p>
+  <ul>
+    <li>A checkout reminder for people who start a purchase and don&rsquo;t finish it</li>
+    <li>An onboarding series for new paid programme customers, so the upgrade turns into results and renewals</li>
+    <li>A win-back flow for subscribers who stop opening, before they become dead weight on the list</li>
+  </ul>
+  <p>I would also give every value email in the challenge a small link to click, so engagement between offers can be measured, and track revenue per journey rather than opens and clicks alone.</p>
 </article>
 
 <article class="piece" id="challenge" data-title="Fourteen-day challenge">
