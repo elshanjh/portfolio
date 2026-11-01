@@ -15,11 +15,12 @@
   <style>
     #programme .diagram { margin: 2.5rem 0; }
     #programme .diagram svg { width: 100%; max-width: 30rem; height: auto; display: block; font-family: var(--sans); }
-    #programme .diagram .t { fill: var(--ink); font-size: 15px; font-weight: 700; }
-    #programme .diagram .s { fill: var(--muted); font-size: 13px; }
+    #programme .diagram .t { fill: var(--ink); font-size: 14px; font-weight: 700; }
+    #programme .diagram .s { fill: var(--muted); font-size: 11.5px; }
     #programme .diagram .k { fill: var(--ink); font-size: 13px; }
     #programme .diagram .au { fill: var(--bar); stroke: none; }
-    #programme .diagram .one { fill: none; stroke: var(--muted); stroke-width: 1.25; }
+    #programme .diagram .entry { fill: none; stroke: var(--accent); stroke-width: 2; }
+    #programme .diagram .stage { fill: none; stroke: var(--muted); stroke-width: 1.25; }
     #programme .diagram .ln { fill: none; stroke: var(--muted); stroke-width: 1.25; }
     #programme .diagram .hd { fill: var(--muted); }
   </style>
@@ -95,7 +96,7 @@
   <h2 class="picks-title">Contents</h2>
   <h3 class="picks-group">Freelance client work</h3>
   <ul class="picks">
-    <li><a href="#programme"><b>The full programme, from signup to paid programme</b><span>How the six pieces below fit together into one lifecycle, and what I would build differently.</span></a></li>
+    <li><a href="#programme"><b>The full programme, from signup to paid programme</b><span>The map behind the six pieces below: three ways in, one path to the paid programme, and what I would add next time.</span></a></li>
     <li><a href="#challenge"><b>Fourteen-day challenge for existing buyers</b><span>12 of about 280 buyers upgraded to the paid programme, from a series that sold in only one email out of three.</span></a></li>
     <li><a href="#welcome-series"><b>Founder story welcome series</b><span>Ten automated emails that tell the founder’s story, with no selling. The first opened at 30.0%.</span></a></li>
     <li><a href="#survey"><b>Customer survey campaign</b><span>A 17.0% click rate, and answers that shaped the client&rsquo;s next product.</span></a></li>
@@ -122,76 +123,91 @@
   <p class="lead">For a health and fitness client, I wrote and built 35+ emails across 10+ automated Mailchimp journeys, sent in Estonian. Each piece on this page covers one part. This one shows how they worked together, from a first signup to the paid programme.</p>
   <p>The client sold an entry-level product, a cookbook and a paid programme. The goal was a clear path from first signup to the paid programme that didn&rsquo;t wear out the list, and a way to hear from customers so their answers could shape what came next.</p>
 
-  <h2>The journey</h2>
+  <h2>The map</h2>
+  <p>Before building, I mapped the whole programme: where contacts come from, which tag each step applies, and where every path leads.</p>
   <figure class="diagram">
-    <svg viewBox="0 0 480 548" role="img" aria-label="Automated journeys from entry sequences to welcome series, monthly newsletter, first purchase, 14-day challenge and paid programme, with a customer survey, waitlist and name A/B test as one-off campaigns alongside">
+    <svg viewBox="0 0 480 640" role="img" aria-label="Three ways in: signup form, free download and cookbook purchase. Each has its own follow-up, all lead to the founder story series, cookbook buyers also get the 14-day challenge, and anyone who buys the programme becomes a programme customer and starts onboarding">
       <defs><marker id="prog-hd" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path class="hd" d="M0 0L10 5L0 10z"/></marker></defs>
 
-      <rect class="au" x="0" y="6" width="14" height="14" rx="3"/><text class="k" x="22" y="18">Automated journey</text>
-      <rect class="one" x="170" y="6" width="14" height="14" rx="3"/><text class="k" x="192" y="18">One-off campaign</text>
+      <rect class="entry" x="1" y="6" width="14" height="14" rx="3"/><text class="k" x="22" y="18">Way in</text>
+      <rect class="au" x="94" y="6" width="14" height="14" rx="3"/><text class="k" x="116" y="18">Automation</text>
+      <rect class="stage" x="214" y="6" width="14" height="14" rx="3"/><text class="k" x="236" y="18">Lead or customer</text>
 
       <g class="ln" marker-end="url(#prog-hd)">
-        <path d="M130 96V130"/>
-        <path d="M130 182V216"/>
-        <path d="M130 268V302"/>
-        <path d="M130 354V388"/>
-        <path d="M130 440V474"/>
+        <path d="M80 92V130"/><path d="M240 92V130"/><path d="M400 92V130"/>
+        <path d="M80 178V216"/><path d="M240 178V216"/><path d="M400 178V216"/>
+        <path d="M170 240H160V154H150"/>
+        <path d="M80 264V318"/><path d="M240 264V318"/><path d="M400 264V318"/>
+        <path d="M400 292H290V318"/>
+        <path d="M160 366V384H240V404"/>
+        <path d="M240 476V506"/>
+        <path d="M240 554V584"/>
       </g>
+      <path class="ln" d="M400 366V384H240"/>
 
-      <rect class="au" x="20" y="44" width="220" height="52" rx="8"/>
-      <text class="t" x="130" y="66" text-anchor="middle">Entry sequences</text>
-      <text class="s" x="130" y="85" text-anchor="middle">three ways in</text>
-      <text class="s" x="140" y="118">tag on finish</text>
+      <rect class="entry" x="10" y="44" width="140" height="48" rx="8"/>
+      <text class="t" x="80" y="73" text-anchor="middle">Signup form</text>
+      <rect class="entry" x="170" y="44" width="140" height="48" rx="8"/>
+      <text class="t" x="240" y="73" text-anchor="middle">Free download</text>
+      <rect class="entry" x="330" y="44" width="140" height="48" rx="8"/>
+      <text class="t" x="400" y="73" text-anchor="middle">Cookbook buy</text>
 
-      <rect class="au" x="20" y="130" width="220" height="52" rx="8"/>
-      <text class="t" x="130" y="152" text-anchor="middle">Welcome series</text>
-      <text class="s" x="130" y="171" text-anchor="middle">10 emails, no selling</text>
-      <text class="s" x="140" y="204">&ldquo;completed&rdquo; tag</text>
+      <rect class="stage" x="10" y="130" width="140" height="48" rx="8"/>
+      <text class="t" x="80" y="159" text-anchor="middle">Lead</text>
+      <rect class="stage" x="170" y="130" width="140" height="48" rx="8"/>
+      <text class="t" x="240" y="159" text-anchor="middle">Lead</text>
+      <rect class="stage" x="330" y="130" width="140" height="48" rx="8"/>
+      <text class="t" x="400" y="159" text-anchor="middle">Cookbook buyer</text>
 
-      <rect class="au" x="20" y="216" width="220" height="52" rx="8"/>
-      <text class="t" x="130" y="238" text-anchor="middle">Monthly newsletter</text>
-      <text class="s" x="130" y="257" text-anchor="middle">to the whole list</text>
+      <rect class="au" x="10" y="216" width="140" height="48" rx="8"/>
+      <text class="t" x="80" y="236" text-anchor="middle">Follow-ups</text>
+      <text class="s" x="80" y="254" text-anchor="middle">to the programme</text>
+      <rect class="au" x="170" y="216" width="140" height="48" rx="8"/>
+      <text class="t" x="240" y="236" text-anchor="middle">Follow-ups</text>
+      <text class="s" x="240" y="254" text-anchor="middle">to the form</text>
+      <rect class="au" x="330" y="216" width="140" height="48" rx="8"/>
+      <text class="t" x="400" y="236" text-anchor="middle">Recipe series</text>
+      <text class="s" x="400" y="254" text-anchor="middle">nurture</text>
 
-      <rect class="au" x="20" y="302" width="220" height="52" rx="8"/>
-      <text class="t" x="130" y="324" text-anchor="middle">First purchase</text>
-      <text class="s" x="130" y="343" text-anchor="middle">entry-level product</text>
-      <text class="s" x="140" y="376">buyer tag</text>
+      <rect class="au" x="10" y="318" width="300" height="48" rx="8"/>
+      <text class="t" x="160" y="338" text-anchor="middle">Founder story series</text>
+      <text class="s" x="160" y="356" text-anchor="middle">10 emails, for everyone who hasn&rsquo;t bought</text>
+      <rect class="au" x="330" y="318" width="140" height="48" rx="8"/>
+      <text class="t" x="400" y="338" text-anchor="middle">14-day challenge</text>
+      <text class="s" x="400" y="356" text-anchor="middle">2 value, 1 offer</text>
 
-      <rect class="au" x="20" y="388" width="220" height="52" rx="8"/>
-      <text class="t" x="130" y="410" text-anchor="middle">14-day challenge</text>
-      <text class="s" x="130" y="429" text-anchor="middle">two value emails, one offer</text>
-      <text class="s" x="140" y="462">12 upgraded</text>
+      <polygon class="stage" points="160,440 240,404 320,440 240,476"/>
+      <text class="t" x="240" y="437" text-anchor="middle">Bought the</text>
+      <text class="t" x="240" y="455" text-anchor="middle">programme?</text>
+      <text class="s" x="330" y="444">no: newsletter</text>
+      <text class="s" x="250" y="496">yes</text>
 
-      <rect class="au" x="20" y="474" width="220" height="52" rx="8"/>
-      <text class="t" x="130" y="496" text-anchor="middle">Paid programme</text>
-      <text class="s" x="130" y="515" text-anchor="middle">the upgrade</text>
-
-      <rect class="one" x="280" y="216" width="190" height="52" rx="8"/>
-      <text class="t" x="375" y="238" text-anchor="middle">Customer survey</text>
-      <text class="s" x="375" y="257" text-anchor="middle">&ldquo;responded&rdquo; tag</text>
-
-      <rect class="one" x="280" y="302" width="190" height="52" rx="8"/>
-      <text class="t" x="375" y="324" text-anchor="middle">Waitlist</text>
-      <text class="s" x="375" y="343" text-anchor="middle">launch goes here first</text>
-
-      <rect class="one" x="280" y="474" width="190" height="52" rx="8"/>
-      <text class="t" x="375" y="496" text-anchor="middle">Name A/B test</text>
-      <text class="s" x="375" y="515" text-anchor="middle">programme renamed</text>
+      <rect class="stage" x="150" y="506" width="180" height="48" rx="8"/>
+      <text class="t" x="240" y="535" text-anchor="middle">Programme customer</text>
+      <rect class="au" x="150" y="584" width="180" height="48" rx="8"/>
+      <text class="t" x="240" y="613" text-anchor="middle">Onboarding</text>
     </svg>
-    <figcaption>Simplified. The newsletter goes to the whole list, and people can buy at any point.</figcaption>
+    <figcaption>Simplified and anonymised. A download lead who fills in the form joins the form path. Every path checks for a programme purchase along the way, and a buyer leaves the nurture as soon as they buy.</figcaption>
   </figure>
 
-  <h2>How the stages connect</h2>
+  <h2>How it works</h2>
   <ol class="flow">
-    <li><b>Entry</b>New subscribers come in through one of three entry sequences. Finishing any of them applies a tag that starts the welcome series.</li>
-    <li><b>Welcome</b>Ten emails tell the founder&rsquo;s story, with no selling. A &ldquo;completed&rdquo; tag marks who read the whole story.</li>
-    <li><b>Engagement</b>A monthly newsletter keeps the whole list warm between launches.</li>
-    <li><b>Listening</b>A survey asks customers what they want next. Responders are tagged, and their answers shaped the client&rsquo;s next product.</li>
-    <li><b>Launch</b>A waitlist invitation builds a warm audience before a new product goes live. Everyone who joins is tagged, so the launch reaches them first.</li>
-    <li><b>Upsell</b>Buyers of the entry-level product enter a 14-day challenge that moves them toward the paid programme, with entry conditions that filter who can come in.</li>
-    <li><b>Optimisation</b>An A/B test on the programme&rsquo;s name checks who the offer speaks to.</li>
+    <li><b>Three ways in</b>Contacts arrive through a signup form, a free download or a cookbook purchase. Each way in applies its own tag, so every later email knows where the contact came from.</li>
+    <li><b>Follow-up by source</b>Form leads get follow-ups toward the paid programme. Download leads get follow-ups that invite them to fill in the form, and those who do join the form path. Cookbook buyers get a recipe series.</li>
+    <li><b>Founder story</b>When any of these ends without a programme purchase, the contact enters the ten-email founder story series.</li>
+    <li><b>Upsell</b>Cookbook buyers also get the 14-day challenge, which leads to the programme offer.</li>
+    <li><b>Purchase</b>A programme purchase at any point tags the contact as a programme customer and starts onboarding.</li>
+    <li><b>Alongside</b>The monthly newsletter, the customer survey, the waitlist, the name A/B test and a time-limited cookbook offer to leads ran as campaigns around these journeys.</li>
   </ol>
-  <p>Tags are what hold it together. Each one records something a contact did, so every campaign goes to the people it is meant for, not to the whole list.</p>
+
+  <h2>Where the revenue comes from</h2>
+  <p>The map also set out four sales opportunities, so each journey had a commercial job:</p>
+  <ul>
+    <li><b>Upsell:</b> cookbook buyers to the paid programme</li>
+    <li><b>Cross-sell:</b> programme customers to the cookbook</li>
+    <li><b>Down-sell:</b> leads who don&rsquo;t buy the programme to a lower-priced offer, such as the cookbook</li>
+    <li><b>Re-engagement:</b> inactive leads and customers back through the newsletter</li>
+  </ul>
 
   <h2>Results at each stage</h2>
   <table>
@@ -209,11 +225,10 @@
   </table>
 
   <h2>Looking back</h2>
-  <p>The programme covered the path from signup to upsell. Looking back, it was missing three journeys I would build first next time:</p>
+  <p>The programme covered every way in, through to onboarding. Looking back, I would add two journeys next time:</p>
   <ul>
     <li>A checkout reminder for people who start a purchase and don&rsquo;t finish it</li>
-    <li>An onboarding series for new paid programme customers, so the upgrade turns into results and renewals</li>
-    <li>A win-back flow for subscribers who stop opening, before they become dead weight on the list</li>
+    <li>A dedicated win-back flow, so inactive contacts get more than the newsletter before they become dead weight on the list</li>
   </ul>
   <p>I would also give every value email in the challenge a small link to click, so engagement between offers can be measured, and track revenue per journey rather than opens and clicks alone.</p>
 </article>
