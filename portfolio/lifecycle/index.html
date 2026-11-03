@@ -24,6 +24,8 @@
     #kyno .diagram .lst { fill: none; stroke: var(--muted); stroke-width: 1.25; }
     #kyno .diagram .ln { fill: none; stroke: var(--muted); stroke-width: 1.25; }
     #kyno .diagram .hd { fill: var(--muted); }
+    #programme .segs td { vertical-align: top; }
+    #programme .segs td + td { padding-left: 1rem; }
     #programme .diagram { margin: 2.5rem 0; }
     #programme .diagram svg { width: 100%; max-width: 30rem; height: auto; display: block; font-family: var(--sans); }
     #programme .diagram .t { fill: var(--ink); font-size: 14px; font-weight: 700; }
@@ -210,6 +212,25 @@
     <li><b>Purchase</b>A programme purchase at any point tags the contact as a programme customer and starts onboarding.</li>
     <li><b>Alongside</b>The monthly newsletter, the customer survey, the waitlist, the name A/B test and a time-limited cookbook offer to leads ran as campaigns around these journeys.</li>
   </ol>
+
+  <h2>Segments</h2>
+  <p>Tags record what a contact did. Segments sort the whole list by where each person stands, so every send has a clear audience. Leads were sorted by engagement, customers by what they bought.</p>
+  <table class="segs">
+    <thead>
+      <tr><th>Segment</th><th>Rule</th><th>What they got</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Leads<i>High intent</i></td><td>No purchase, two or more clicks in the last 30 days</td><td>The programme offer first, and launches before anyone else</td></tr>
+      <tr><td>Leads<i>Engaged</i></td><td>No purchase, opened or clicked in the last 60 days</td><td>Follow-ups, the newsletter and launch emails</td></tr>
+      <tr><td>Leads<i>New</i></td><td>Joined in the last 30 days</td><td>The entry sequences and the founder story, before any offer</td></tr>
+      <tr><td>Leads<i>Inactive</i></td><td>No opens or clicks in 90 days</td><td>The newsletter only, kept apart from offers</td></tr>
+      <tr><td>Customers<i>Cookbook</i></td><td>Bought the cookbook</td><td>The recipe series and the 14-day challenge</td></tr>
+      <tr><td>Customers<i>Programme</i></td><td>Bought the paid programme</td><td>Onboarding, and no more programme offers</td></tr>
+      <tr><td>Customers<i>More than one product</i></td><td>Bought two or more products</td><td>Left out of offers for products they already own</td></tr>
+      <tr><td>Cancelled</td><td>Cancelled or stopped a purchase</td><td>Left out of all offers</td></tr>
+    </tbody>
+  </table>
+  <p>Three rules keep the segments clean. A buyer leaves the lead segments as soon as they buy, so customers never get a lead offer. A lead sits in one engagement level at a time, and the highest one wins. And cancelled contacts are left out of every offer, so nobody is sold to straight after leaving.</p>
 
   <h2>Where the revenue comes from</h2>
   <p>The map also set out four sales opportunities, so each journey had a commercial job:</p>
