@@ -611,7 +611,6 @@ ORDER BY last_transaction;</code></pre>
       <tr><td><b>Segment rules.</b> Two rules were joined with OR instead of AND, which put 27 people in the segment instead of 16.</td><td>Changed to AND and checked the count against the SQL again.</td></tr>
       <tr><td><b>Missing data.</b> The first import didn’t bring in the custom fields, so the segment had nothing to filter on.</td><td>Imported again with every field and the right types for numbers and dates, then checked one profile.</td></tr>
       <tr><td><b>Delay.</b> After a test payment, the user stayed in the segment for about 15 minutes.</td><td>No risk to the flow, because the filters check the profile itself just before each email.</td></tr>
-      <tr><td><b>Sender name.</b> The emails went out under the account’s default sender, not Lumo.</td><td>Set the sender to Lumo on all three. In fintech, an unexpected sender looks like phishing.</td></tr>
     </tbody>
   </table>
   <p>I also checked the greeting for a user with and without a first name, the exit rule with a test payment, and the layout in Gmail on a phone in dark mode.</p>
