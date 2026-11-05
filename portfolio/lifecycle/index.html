@@ -573,7 +573,7 @@ GROUP BY u.user_id
 HAVING COUNT(t.transaction_id) &gt;= 3
    AND MAX(t.transaction_date) &lt;= DATE('2026-11-04', '-60 days')
 ORDER BY last_transaction;</code></pre>
-  <p>The first version returned 17 users instead of 16. One of them had an email address with no @ sign, so I added the last rule in the WHERE part.</p>
+  <p>The test data included an email address with no @ sign on purpose. The last rule in the WHERE part catches it, so the query returns the expected 16.</p>
 
   <h2>How it is built</h2>
   <p>In Klaviyo, a segment uses the same rules as the SQL and updates itself every day. It matched the SQL at 16 users. Joining the segment starts the flow.</p>
