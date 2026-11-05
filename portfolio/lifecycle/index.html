@@ -11,6 +11,7 @@
   <meta property="og:type" content="website">
   <link rel="preload" href="../../assets/fonts/brygada-1918-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin="">
   <link rel="stylesheet" href="../../assets/site.css?v=b7274e78">
+  <style>#lumo-winback pre { width: 0; min-width: 100%; box-sizing: border-box; font-size: 0.85rem; line-height: 1.5; overflow-x: auto; padding: 1rem 1.25rem; margin: 1.5rem 0; background: var(--bar); border-radius: 6px; } #lumo-winback .qa td { vertical-align: top; } #lumo-winback .qa td + td, #lumo-winback .qa th + th { padding-left: 1.25rem; width: 45%; } #lumo-winback ul li { margin-bottom: 0.6rem; }</style>
   <style>#rider-reactivation td { vertical-align: top; } #rider-reactivation td + td, #rider-reactivation th + th { padding-left: 1.25rem; width: 35%; }</style>
   <style>
     #kyno .diagram { margin: 2.5rem 0; }
@@ -94,6 +95,10 @@
         <ul>
           <li><a href="#kyno">KYNO newsletter</a></li>
         </ul>
+        <h3>Practice builds</h3>
+        <ul>
+          <li><a href="#lumo-winback">Win-back flow in Klaviyo</a></li>
+        </ul>
         <h3>Spec concepts</h3>
         <ul>
           <li><a href="#rider-reactivation">Rider reactivation flow</a></li>
@@ -121,6 +126,10 @@
   <h3 class="picks-group">KYNO, the film platform I co-founded</h3>
   <ul class="picks">
     <li><a href="#kyno"><b>KYNO newsletter, built from scratch</b><span>Signup, welcome email, newsletter and new episode emails, set up from scratch. The list more than doubled in two weeks.</span></a></li>
+  </ul>
+  <h3 class="picks-group">Practice builds, with test data</h3>
+  <ul class="picks">
+    <li><a href="#lumo-winback"><b>Win-back flow for dormant card users, in Klaviyo</b><span>SQL audience, three emails and exit rules for a fictional money app, tested against 40 test users. Testing caught a consent gap that would have emailed 3 people without opt-in.</span></a></li>
   </ul>
   <h3 class="picks-group">Spec concepts, written without a client</h3>
   <ul class="picks">
@@ -479,6 +488,78 @@
     </tbody>
   </table>
   <p>Clicks are the number I watch, because Brevo&rsquo;s opens include Apple Mail privacy opens.</p>
+</article>
+
+<article class="piece" id="lumo-winback" data-title="Win-back flow in Klaviyo">
+  <a class="back-m" href="./">All lifecycle and email pieces</a>
+  <h1>Win-back flow for dormant card users, built in Klaviyo</h1>
+  <p class="label">Practice build, November 2026. Lumo is a fictional brand. Built and tested in Klaviyo with test data, never sent to real people</p>
+  <p class="lead">A three-email flow for users of a money app who stopped using their debit card. I wrote the audience logic in SQL, rebuilt it in Klaviyo, and tested every rule against 40 test users made to break it.</p>
+  <p>Lumo is an Estonian money app with a debit card. Active users pay with the card at least once a week. The flow is for dormant users: people who made 3 or more card payments but none in the last 60 days. The goal is to get 8% of them to make one card payment within 30 days.</p>
+  <p>Some people must never get these emails: anyone without marketing consent, with a closed, frozen or under-review account, with a blocked card, or with an open complaint. People who signed up but never paid are left out on purpose. They need a different flow, one about getting started.</p>
+
+  <h2>Who gets it: the SQL</h2>
+  <p>I built a small test database with two tables, users and transactions, and wrote the query that finds the audience.</p>
+  <pre><code>SELECT u.user_id, u.email, u.first_name,
+       COUNT(t.transaction_id) AS total_transactions,
+       MAX(t.transaction_date) AS last_transaction
+FROM users AS u
+JOIN transactions AS t ON t.user_id = u.user_id
+WHERE u.account_status = 'open'
+  AND u.card_status = 'active'
+  AND u.marketing_consent = 'yes'
+  AND u.complained = 'no'
+  AND u.email LIKE '%_@_%._%'
+GROUP BY u.user_id
+HAVING COUNT(t.transaction_id) &gt;= 3
+   AND MAX(t.transaction_date) &lt;= DATE('2026-11-04', '-60 days')
+ORDER BY last_transaction;</code></pre>
+  <p>The first version returned 17 users instead of 16. One of them had an email address with no @ sign, so I added the last rule in the WHERE part.</p>
+
+  <h2>How it is built</h2>
+  <p>In Klaviyo, a segment uses the same rules as the SQL and updates itself every day. It matched the SQL at 16 users. Joining the segment starts the flow.</p>
+  <ol class="flow">
+    <li><b>Day 0, reminder</b>No offer. A short note on what the card still does, because many people haven’t left, they have just drifted.</li>
+    <li><b>Day 4, one feature</b>Round-ups, which save the change from every card payment. One concrete reason to pay with the card again.</li>
+    <li><b>Day 9, small offer</b>€5 back on a payment of €10 or more within 7 days, and a link to tell us why Lumo isn’t right anymore.</li>
+  </ol>
+  <table>
+    <thead>
+      <tr><th>Email</th><th>When</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Reminder<i>Your Lumo card is still in your wallet</i></td><td>Day 0</td></tr>
+      <tr><td>Feature<i>You can save €10 a month without doing anything</i></td><td>Day 4</td></tr>
+      <tr><td>Offer<i>Get €5 back on your next card payment!</i></td><td>Day 9</td></tr>
+    </tbody>
+  </table>
+  <ul>
+    <li><b>The cheapest message goes first.</b> Only people who ignored the first two emails get the €5, so Lumo doesn’t pay people who would have come back anyway.</li>
+    <li><b>People leave as soon as they pay.</b> Before every email, flow filters check the profile again. A payment updates the last transaction date, and the next email doesn’t go out. The same filters stop the flow if the account is frozen, the card is blocked or consent is withdrawn.</li>
+    <li><b>Once every 180 days.</b> Someone can be won back again later, but can’t collect the €5 every few months.</li>
+    <li><b>Small things.</b> No one gets two Lumo emails within 16 hours, every link has UTM tags so returning users can be traced to the flow, and people without a first name get “Hi there”.</li>
+  </ul>
+
+  <h2>What testing caught</h2>
+  <p>The test users included traps on purpose: a duplicate person, a broken email, a user with no name, users right on the 60-day line, and users who fail each exclusion rule one at a time.</p>
+  <table class="qa">
+    <thead>
+      <tr><th>What happened</th><th>What I did</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><b>Duplicate person.</b> Klaviyo skipped both rows of a duplicate instead of merging them, so a user who should get the flow silently disappeared.</td><td>Removed the duplicate before import. In a real setup this belongs in the SQL, by matching emails in lowercase with spaces removed.</td></tr>
+      <tr><td><b>Consent.</b> Klaviyo’s “can receive email marketing” rule includes people who never subscribed. 3 users without marketing consent would have got the flow.</td><td>Filtered on the app’s own consent field. For a fintech, marketing without a clear opt-in is a GDPR risk.</td></tr>
+      <tr><td><b>Segment rules.</b> Two rules were joined with OR instead of AND, which put 27 people in the segment instead of 16.</td><td>Changed to AND and checked the count against the SQL again.</td></tr>
+      <tr><td><b>Missing data.</b> The first import didn’t bring in the custom fields, so the segment had nothing to filter on.</td><td>Imported again with every field and the right types for numbers and dates, then checked one profile.</td></tr>
+      <tr><td><b>Delay.</b> After a test payment, the user stayed in the segment for about 15 minutes.</td><td>No risk to the flow, because the filters check the profile itself just before each email.</td></tr>
+      <tr><td><b>Sender name.</b> The emails went out under the account’s default sender, not Lumo.</td><td>Set the sender to Lumo on all three. In fintech, an unexpected sender looks like phishing.</td></tr>
+    </tbody>
+  </table>
+  <p>I also checked the greeting for a user with and without a first name, the exit rule with a test payment, and the layout in Gmail on a phone in dark mode.</p>
+
+  <h2>What I would add next</h2>
+  <p>First, a holdout group: 10% of dormant users who get no emails, using Klaviyo’s random sample filter. The main number would be how many users make a card payment within 30 days, compared with that group. Second, payments sent from the app as live events instead of an imported field, so people leave the flow within minutes of paying. For a buy now, pay later product, I would also add a rule that never emails anyone with an overdue payment.</p>
+  <p class="label note">No results are shown because nothing was sent. What this piece shows is that the audience and the rules are right.</p>
 </article>
 
 <article class="piece" id="rider-reactivation" data-title="Rider reactivation flow">
