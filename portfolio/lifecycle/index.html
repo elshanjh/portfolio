@@ -607,7 +607,7 @@ ORDER BY last_transaction;</code></pre>
     </thead>
     <tbody>
       <tr><td><b>Duplicate person.</b> Klaviyo skipped both rows of a duplicate instead of merging them, so a user who should get the flow silently disappeared.</td><td>Removed the duplicate before import. In a real setup this belongs in the SQL, by matching emails in lowercase with spaces removed.</td></tr>
-      <tr><td><b>Consent.</b> Klaviyo’s “can receive email marketing” rule includes people who never subscribed. 3 users without marketing consent would have got the flow.</td><td>Filtered on the app’s own consent field. For a fintech, marketing without a clear opt-in is a GDPR risk.</td></tr>
+      <tr><td><b>Consent.</b> Klaviyo’s “can receive email marketing” rule includes people who never subscribed. 3 users without marketing consent would have got the flow.</td><td>Added Klaviyo’s “because subscribed” filter, and also checked the app’s own consent field, so consent is verified in two places. For a fintech, marketing without a clear opt-in is a GDPR risk.</td></tr>
       <tr><td><b>Delay.</b> After a test payment, the user stayed in the segment for about 15 minutes.</td><td>No risk to the flow, because the filters check the profile itself just before each email.</td></tr>
     </tbody>
   </table>
